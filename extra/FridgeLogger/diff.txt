@@ -1,0 +1,25 @@
+1c1,2
+< #include <SD.h>
+---
+> #include <SdFat.h>
+> SdFat SD;
+38c39
+< File logfile;
+---
+> SdFile logfile;
+72c73
+<   if (!SD.begin(chipSelect)) {
+---
+>   if (!SD.init(SPI_HALF_SPEED, chipSelect)) {
+84c85
+<       logfile = SD.open(filename, FILE_WRITE); 
+---
+>       logfile.open(filename, O_WRITE | O_CREAT); 
+89c90
+<   if (! logfile) {
+---
+>   if (! logfile.isOpen()) {
+220c221
+<   logfile.flush();
+---
+>   logfile.sync();

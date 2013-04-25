@@ -1,0 +1,22 @@
+#######################################
+# Syntax Coloring Map Servo
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+ServoShield2	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+setposition	KEYWORD2
+getposition	KEYWORD2
+setbounds	KEYWORD2
+start	        KEYWORD2
+stop	        KEYWORD2
+invertservo	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################

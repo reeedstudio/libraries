@@ -1,0 +1,28 @@
+#######################################
+# Syntax Coloring Map For pwm_lvc
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+motordriver_4wd	KEYWORD1
+motordriver_4wd_dfs	KEYWORD1
+MOTOR	KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+init	KEYWORD2
+setRun1	KEYWORD2
+setRun2	KEYWORD2
+setStop1	KEYWORD2
+setStop2	KEYWORD2
+setSpeed1	KEYWORD2
+setSpeed2	KEYWORD2
+setDir1	KEYWORD2
+setDir2	KEYWORD2
+setSpeedDir	KEYWORD2
+setSpeedDir1	KEYWORD2
+setSpeedDir2	KEYWORD2
+#######################################
+# Constants (LITERAL1)
+#######################################

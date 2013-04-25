@@ -1,0 +1,7 @@
+examplesV1 - Examples from earlier versions of SdFat.
+
+FridgeLogger - Example versions of Adafruit light temperature logger
+
+makePinInclude - Sketch used to make Sd2PinMap.h
+
+SdFatTestSuite - Development tests.

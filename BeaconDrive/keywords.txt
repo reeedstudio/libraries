@@ -1,0 +1,42 @@
+#######################################
+# Syntax Coloring Map For BeaconDrive
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+BeaconDrive	KEYWORD1
+BeaconDriveDfs	KEYWORD1
+BcnDrive	KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+init	KEYWORD2
+grovePowerOn	KEYWORD2
+grovePowerOff	KEYWORD2
+sysPowerOff	KEYWORD2
+sysPowerOn	KEYWORD2
+rfBeePowerOn	KEYWORD2
+rfBeePowerOff	KEYWORD2
+beepOn	KEYWORD2
+beepOff	KEYWORD2
+useLed	KEYWORD2
+ledIsr	KEYWORD2
+pwrDown	KEYWORD2
+wakeUp	KEYWORD2
+setLedShine	KEYWORD2
+#######################################
+# Constants (LITERAL1)
+#######################################
+PINPWRLOW	LITERAL1
+PINGROVEPWR	LITERAL1
+PINSYSPWR	LITERAL1
+PINSYSBUTT	LITERAL1
+PINRFBEEPWR	LITERAL1
+PINBATLOW	LITERAL1
+PINBEEP	LITERAL1
+PINLEDGREEN	LITERAL1
+PINLEDRED	LITERAL1
+LEDCOLOROFF	LITERAL1
+LEDCOLORGREEN	LITERAL1
+LEDCOLORRED	LITERAL1

@@ -1,0 +1,24 @@
+#######################################
+# Syntax Coloring Map For pwm_lvc
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+BeaconActuator	KEYWORD1
+BeaconActuatorDfs	KEYWORD1
+ACTUATOR	KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+init	KEYWORD2
+driveActuator	KEYWORD2
+#######################################
+# Constants (LITERAL1)
+#######################################
+ACTUATORIOTOP	LITERAL1
+ACTUATOROLED12864	LITERAL1
+ACTUATOROLED9696	LITERAL1
+ACTUATOR4DIGITALDISP	LITERAL1
+ACTUATORLEDBAR	LITERAL1
+ACTUATORIRSEND	LITERAL1

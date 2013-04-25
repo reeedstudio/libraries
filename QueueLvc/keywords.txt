@@ -1,0 +1,23 @@
+#######################################
+# Syntax Coloring Map For pwm_lvc
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+Queue	KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+init	KEYWORD2
+getLength	KEYWORD2
+getAt	KEYWORD2
+getHead	KEYWORD2
+push	KEYWORD2
+pop	KEYWORD2
+dispHeadCnt	KEYWORD2
+dispQueue	KEYWORD2
+#######################################
+# Constants (LITERAL1)
+#######################################
+MAXSIZE	LITERAL1

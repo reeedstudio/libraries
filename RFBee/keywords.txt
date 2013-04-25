@@ -1,0 +1,21 @@
+#######################################
+# Syntax Coloring Map For pwm_lvc
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+RFBEE	KEYWORD1
+RFBeeSendRev	KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+isr	KEYWORD2
+init	KEYWORD2
+isDta	KEYWORD2
+sendDta	KEYWORD2
+revDta	KEYWORD2
+#######################################
+# Constants (LITERAL1)
+#######################################
+DATALEN	LITERAL1

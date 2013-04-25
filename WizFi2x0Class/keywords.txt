@@ -1,0 +1,54 @@
+#######################################
+# Syntax Coloring Map For WizFi2x0
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SPIChar                       	KEYWORD1
+WizFi2x0Class			KEYWORD1
+TimeoutClass			KEYWORD1
+WizFiClient			KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	        		KEYWORD2
+associate				KEYWORD2
+disassociate			KEYWORD2
+IsAssociated			KEYWORD2
+write                           KEYWORD2
+read                           	KEYWORD2
+ByteStuff                 	KEYWORD2
+CheckReply			KEYWORD2
+CheckSync			KEYWORD2
+ParseReply			KEYWORD2
+SendSync			KEYWORD2
+TimerStart			KEYWORD2
+TimerStop			KEYWORD2
+GetIsTimeout			KEYWORD2
+CheckIsTimeout			KEYWORD2
+SendCommand			KEYWORD2
+BufClear				KEYWORD2
+SetSSID				KEYWORD2
+GetSSID				KEYWORD2
+connect				KEYWORD2
+disconnect			KEYWORD2
+IsConnected			KEYWORD2
+RcvPacket			KEYWORD2
+available				KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+WizFi2x0_RST			LITERAL1
+WizFi2x0_DataReady		LITERAL1
+WizFi2x0_CS			LITERAL1
+WizFi2x0_CmdState_IDLE		LITERAL1
+WizFi2x0_CmdState_Sent		LITERAL1
+WizFi2x0_CmdState_Rcvd		LITERAL1
+WizFi2x0_CmdState_Ready		LITERAL1
+ASCII_ESC					LITERAL1

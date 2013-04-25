@@ -1,0 +1,29 @@
+#######################################
+# IRSendRev by loovee
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+IRSendRev	KEYWORD1
+IRSendRevInt	KEYWORD1
+IR	KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+Init	KEYWORD2
+Recv	KEYWORD2
+IsDta	KEYWORD2
+Clear	KEYWORD2
+Send	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+D_LEN	LITERAL1
+D_STARTH	LITERAL1
+D_STARTL	LITERAL1
+D_SHORT	LITERAL1
+D_LONG	LITERAL1
+D_DATALEN	LITERAL1
+D_DATA	LITERAL1

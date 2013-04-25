@@ -1,0 +1,29 @@
+#######################################
+# Syntax Coloring Map MusicPlayer_v1_7
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+MusicPlayer	KEYWORD1
+spl_t	KEYWORD1
+playingstatetype	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+begin	KEYWORD2
+playList	KEYWORD2
+playSong	KEYWORD2
+setVolume	KEYWORD2
+setPlayMode	KEYWORD2
+addToPlaylist	KEYWORD2
+attachDigitOperation	KEYWORD2
+creatPlaylist	KEYWORD2
+deleteSong	KEYWORD2
+attachAnalogOperation	KEYWORD2	
+
+#######################################
+# Constants (LITERAL1)
+#######################################

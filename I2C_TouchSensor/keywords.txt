@@ -1,0 +1,22 @@
+#######################################
+# Syntax Coloring Map For SeeedTft2.0
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+I2C_TouchSensor	KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+initialize	KEYWORD2
+readTouchInputs	KEYWORD2
+getTouchState	KEYWORD2
+isTouch	KEYWORD2
+mpr121_setup	KEYWORD2
+checkInterrupt	KEYWORD2
+set_register	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################

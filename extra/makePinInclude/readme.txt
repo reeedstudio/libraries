@@ -1,0 +1,1 @@
+This sketch is used to make Sd2PinMap.h

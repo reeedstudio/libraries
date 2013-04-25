@@ -1,0 +1,23 @@
+#######################################
+# Syntax Coloring Map For SerialLCD 
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Ultrasonic	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+RangeInCentimeters	KEYWORD2
+RangeInInches	KEYWORD2
+duration	KEYWORD2
+MeasureInCentimeters	KEYWORD2
+MeasureInInches	KEYWORD2
+#######################################
+# Constants (LITERAL1)
+#######################################
+
