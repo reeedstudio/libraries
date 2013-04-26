@@ -26,8 +26,6 @@
 #ifndef TFT_h
 #define TFT_h
 
-#define SEEEDUINO
-
 //Basic Colors
 #define RED		    0xf800
 #define GREEN		0x7e00

@@ -4,10 +4,10 @@
   (c) ladyada / adafruit
   Code under MIT License.
 */
+#include <avr/pgmspace.h>
 
 #include "pins_arduino.h"
 #include "wiring_private.h"
-#include <avr/pgmspace.h>
 #include "SeeedTouchScreen.h"
 
 // increase or decrease the touchscreen oversampling. This is a little different than you make think:

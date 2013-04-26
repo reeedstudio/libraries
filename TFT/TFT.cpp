@@ -26,26 +26,20 @@
 #define FONT_X 8
 #define FONT_Y 8
 
-
 void TFT::pushData(unsigned char data)
 {
     all_pin_low();
-#ifdef SEEEDUINO
-    PORTD |= (data<<2);
-    PORTB |= (data>>6);
-#endif
-
-#ifdef MEGA
-
+    
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
     PORTE |= ((data<<4) & (0x30));
     PORTG |= ((data<<3) & (0x20));
     PORTE |= ((data & 0x08));
     PORTH |= ((data>>1) & (0x78));
-
+#else
+    PORTD |= (data<<2);
+    PORTB |= (data>>6);
 #endif
 
-#ifdef MAPLE
-#endif
 }
 
 unsigned char TFT::getData(void)
@@ -420,56 +414,40 @@ void TFT::drawString(char *string,unsigned int poX, unsigned int poY,unsigned in
 
 void TFT::all_pin_input(void)
 {
-#ifdef SEEEDUINO
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+    DDRE &=~ 0x38;
+    DDRG &=~ 0x20;
+    DDRH &=~ 0x78;
+#else
     DDRD &=~ 0xfc;
     DDRB &=~ 0x03;
 #endif
 
-#ifdef MEGA
-    DDRE &=~ 0x38;
-    DDRG &=~ 0x20;
-    DDRH &=~ 0x78;
-#endif
-
-#ifdef MAPLE
-
-#endif
 
 }
 
 void TFT::all_pin_output(void)
 {
-#ifdef SEEEDUINO
-    DDRD |= 0xfc;
-    DDRB |= 0x03;
-#endif
 
-#ifdef MEGA
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
     DDRE |= 0x38;
     DDRG |= 0x20;
     DDRH |= 0x78;
-#endif
-
-#ifdef MAPLE
-
+#else
+    DDRD |= 0xfc;
+    DDRB |= 0x03;
 #endif
 }
 
 void TFT::all_pin_low(void)
 {
-#ifdef SEEEDUINO
-    PORTD &=~ 0xfc;
-    PORTB &=~ 0x03;
-#endif
-
-#ifdef MEGA
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
     PORTE &=~ 0x38;
     PORTG &=~ 0x20;
     PORTH &=~ 0x78;
-#endif
-
-#ifdef MAPLE
-
+#else
+    PORTD &=~ 0xfc;
+    PORTB &=~ 0x03;
 #endif
 }
 
