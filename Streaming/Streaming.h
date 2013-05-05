@@ -1,6 +1,6 @@
 /*
 Streaming.h - Arduino library for supporting the << streaming operator
-Copyright (c) 2010 Mikal Hart.  All rights reserved.
+Copyright (c) 2010-2012 Mikal Hart.  All rights reserved.
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -20,16 +20,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef ARDUINO_STREAMING
 #define ARDUINO_STREAMING
 
-#include <Arduino.h>
-#include "LOG.h"
+#if defined(ARDUINO) && ARDUINO >= 100
+#include "Arduino.h"
+#else
+#include "WProgram.h"
+#endif
 
-#define __ST_LOG_LEVEL 3
-static LOG _st_logme(__ST_LOG_LEVEL);
+#define STREAMING_LIBRARY_VERSION 5
 
 // Generic template
 template<class T> 
 inline Print &operator <<(Print &stream, T arg) 
-{ stream.print(arg); _st_logme.DATA(arg); return stream; }
+{ stream.print(arg); return stream; }
 
 struct _BASED 
 { 
@@ -38,6 +40,25 @@ struct _BASED
   _BASED(long v, int b): val(v), base(b) 
   {}
 };
+
+#if ARDUINO >= 100
+
+struct _BYTE_CODE
+{
+	byte val;
+	_BYTE_CODE(byte v) : val(v)
+	{}
+};
+#define _BYTE(a)    _BYTE_CODE(a)
+
+inline Print &operator <<(Print &obj, const _BYTE_CODE &arg)
+{ obj.write(arg.val); return obj; } 
+
+#else
+
+#define _BYTE(a)    _BASED(a, BYTE)
+
+#endif
 
 #define _HEX(a)     _BASED(a, HEX)
 #define _DEC(a)     _BASED(a, DEC)
@@ -50,7 +71,7 @@ struct _BASED
 //   Serial << _HEX(a);
 
 inline Print &operator <<(Print &obj, const _BASED &arg)
-{ obj.print(arg.val); return obj; } 
+{ obj.print(arg.val, arg.base); return obj; } 
 
 #if ARDUINO >= 18
 // Specialization for class _FLOAT
