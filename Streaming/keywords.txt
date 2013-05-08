@@ -23,3 +23,5 @@ _BYTE	KEYWORD2
 #######################################
 
 endl	LITERAL1
+cout	LITERAL1
+tabl	LITERAL1

@@ -28,6 +28,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #define STREAMING_LIBRARY_VERSION 5
 
+#define cout Serial
+#define tabl '\t'
+
 // Generic template
 template<class T> 
 inline Print &operator <<(Print &stream, T arg) 
