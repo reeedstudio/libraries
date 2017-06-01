@@ -16,14 +16,15 @@
 //  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //
 //  Modified record:
-//
+//  - Added displayRaw function
+//    2017/05/30 - @PhiCorb
 /*******************************************************************************/
 #include "TM1637.h"
 #include <Arduino.h>
 static int8_t TubeTab[] = {0x3f,0x06,0x5b,0x4f,
                            0x66,0x6d,0x7d,0x07,
                            0x7f,0x6f,0x77,0x7c,
-                           0x39,0x5e,0x79,0x71};//0~9,A,b,C,d,E,F                        
+                           0x39,0x5e,0x79,0x71};//0~9,A,b,C,d,E,F
 TM1637::TM1637(uint8_t Clk, uint8_t Data)
 {
   Clkpin = Clk;
@@ -39,22 +40,22 @@ void TM1637::init(void)
 
 void TM1637::writeByte(int8_t wr_data)
 {
-  uint8_t i,count1;   
+  uint8_t i,count1;
   for(i=0;i<8;i++)        //sent 8bit data
   {
-    digitalWrite(Clkpin,LOW);      
+    digitalWrite(Clkpin,LOW);
     if(wr_data & 0x01)digitalWrite(Datapin,HIGH);//LSB first
     else digitalWrite(Datapin,LOW);
-    wr_data >>= 1;      
+    wr_data >>= 1;
     digitalWrite(Clkpin,HIGH);
-      
-  }  
+
+  }
   digitalWrite(Clkpin,LOW); //wait for the ACK
   digitalWrite(Datapin,HIGH);
-  digitalWrite(Clkpin,HIGH);     
+  digitalWrite(Clkpin,HIGH);
   pinMode(Datapin,INPUT);
-  while(digitalRead(Datapin))    
-  { 
+  while(digitalRead(Datapin))
+  {
     count1 +=1;
     if(count1 == 200)//
     {
@@ -65,23 +66,23 @@ void TM1637::writeByte(int8_t wr_data)
     pinMode(Datapin,INPUT);
   }
   pinMode(Datapin,OUTPUT);
-  
+
 }
 //send start signal to TM1637
 void TM1637::start(void)
 {
   digitalWrite(Clkpin,HIGH);//send start signal to TM1637
-  digitalWrite(Datapin,HIGH); 
-  digitalWrite(Datapin,LOW); 
-  digitalWrite(Clkpin,LOW); 
-} 
+  digitalWrite(Datapin,HIGH);
+  digitalWrite(Datapin,LOW);
+  digitalWrite(Clkpin,LOW);
+}
 //End of transmission
 void TM1637::stop(void)
 {
   digitalWrite(Clkpin,LOW);
   digitalWrite(Datapin,LOW);
   digitalWrite(Clkpin,HIGH);
-  digitalWrite(Datapin,HIGH); 
+  digitalWrite(Datapin,HIGH);
 }
 //display function.Write to full-screen.
 void TM1637::display(int8_t DispData[])
@@ -120,11 +121,48 @@ void TM1637::display(uint8_t BitAddr,int8_t DispData)
   stop();           //
   start();          //
   writeByte(BitAddr|0xc0);//
-  
+
   writeByte(SegData);//
   stop();            //
   start();          //
-  
+
+  writeByte(Cmd_DispCtrl);//
+  stop();           //
+}
+
+// Same as above display functions, but does not parse input using coding() - allowing raw hex/binary input.
+void TM1637::displayRaw(int8_t DispData[])
+{
+  uint8_t i;
+
+  start();          //start signal sent to TM1637 from MCU
+  writeByte(ADDR_AUTO);//
+  stop();           //
+  start();          //
+  writeByte(Cmd_SetAddr);//
+  for(i=0;i < 4;i ++)
+  {
+    writeByte(DispData[i]);        //
+  }
+  stop();           //
+  start();          //
+  writeByte(Cmd_DispCtrl);//
+  stop();           //
+}
+//******************************************
+void TM1637::displayRaw(uint8_t BitAddr,int8_t DispData)
+{
+  start();          //start signal sent to TM1637 from MCU
+  writeByte(ADDR_FIXED);//
+
+  stop();           //
+  start();          //
+  writeByte(BitAddr|0xc0);//
+
+  writeByte(DispData);//
+  stop();            //
+  start();          //
+
   writeByte(Cmd_DispCtrl);//
   stop();           //
 }
@@ -134,7 +172,7 @@ void TM1637::clearDisplay(void)
   display(0x00,0x7f);
   display(0x01,0x7f);
   display(0x02,0x7f);
-  display(0x03,0x7f);  
+  display(0x03,0x7f);
 }
 //To take effect the next time it displays.
 void TM1637::set(uint8_t brightness,uint8_t SetData,uint8_t SetAddr)
@@ -154,7 +192,7 @@ void TM1637::coding(int8_t DispData[])
 {
   uint8_t PointData;
   if(_PointFlag == POINT_ON)PointData = 0x80;
-  else PointData = 0; 
+  else PointData = 0;
   for(uint8_t i = 0;i < 4;i ++)
   {
     if(DispData[i] == 0x7f)DispData[i] = 0x00;
@@ -165,7 +203,7 @@ int8_t TM1637::coding(int8_t DispData)
 {
   uint8_t PointData;
   if(_PointFlag == POINT_ON)PointData = 0x80;
-  else PointData = 0; 
+  else PointData = 0;
   if(DispData == 0x7f) DispData = 0x00 + PointData;//The bit digital tube off
   else DispData = TubeTab[DispData] + PointData;
   return DispData;
