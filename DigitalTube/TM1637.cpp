@@ -17,7 +17,9 @@
 //
 //  Modified record:
 //  - Added displayRaw function
-//    2017/05/30 - @PhiCorb
+//    2017/05/30 - @Phuurl
+//  - Refactored to reduce duplicated code
+//    2018/01/07 - @Phuurl
 /*******************************************************************************/
 #include "TM1637.h"
 #include <Arduino.h>
@@ -94,19 +96,7 @@ void TM1637::display(int8_t DispData[])
     SegData[i] = DispData[i];
   }
   coding(SegData);
-  start();          //start signal sent to TM1637 from MCU
-  writeByte(ADDR_AUTO);//
-  stop();           //
-  start();          //
-  writeByte(Cmd_SetAddr);//
-  for(i=0;i < 4;i ++)
-  {
-    writeByte(SegData[i]);        //
-  }
-  stop();           //
-  start();          //
-  writeByte(Cmd_DispCtrl);//
-  stop();           //
+  displayRaw(SegData);
 }
 //******************************************
 void TM1637::display(uint8_t BitAddr,int8_t DispData)
@@ -115,19 +105,7 @@ void TM1637::display(uint8_t BitAddr,int8_t DispData)
 
 
   SegData = coding(DispData);
-  start();          //start signal sent to TM1637 from MCU
-  writeByte(ADDR_FIXED);//
-
-  stop();           //
-  start();          //
-  writeByte(BitAddr|0xc0);//
-
-  writeByte(SegData);//
-  stop();            //
-  start();          //
-
-  writeByte(Cmd_DispCtrl);//
-  stop();           //
+  displayRaw(BitAddr, SegData);
 }
 
 // Same as above display functions, but does not parse input using coding() - allowing raw hex/binary input.
