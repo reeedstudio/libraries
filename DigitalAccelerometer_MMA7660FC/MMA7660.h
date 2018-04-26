@@ -50,7 +50,7 @@
 #define MMA7660_PD    0x0A
 class MMA7660
 {
-private:
+public:
 	void write(uint8_t _register, uint8_t _data);
 	uint8_t read(uint8_t _register);
 public:
